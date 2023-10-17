@@ -1,12 +1,15 @@
 const validar = (dados) => {
-   const {nome, descricao, status} = dados
+   const {status} = dados
 
-   if (nome && descricao && status){
+   if(status){
     const statusPermitido = ["FEITO", "A FAZER", "FAZENDO"]
-    return statusPermitido.includes(status.toUpperCase())
+    if(!statusPermitido.includes(status.toUpperCase())){
+        return false
+    }
+    
    }
 
-    return false
+   return true
 }
 
 module.exports = validar
