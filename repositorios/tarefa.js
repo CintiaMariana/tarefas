@@ -85,7 +85,7 @@ const tarefaRepositorio = () => {
             const tarefasFiltradas = tarefas.filter(tarefa => tarefa.id == id)
 
             if (tarefasFiltradas.length == 0){
-                throw new Error("Produto Inexistente")
+                throw new Error("Tarefa Inexistente")
             }
 
             tarefas = tarefas.filter(tarefa => tarefa.id != id)
