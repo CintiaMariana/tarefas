@@ -35,16 +35,7 @@ app.use((req, res, next)=> {
 
 app.get('/docs', swaggerui.setup(swaggerFile))
 
-app.listen(porta, (err) => {
-    if(err){
-        console.log("Erro ao subir aplicação")
-    }else{
-        console.log(`Aplicação executando na porta ${porta}`)
-    }
-})
 
-
-
-// app.listen(process.env.PORTA || 3000, () => {
+ app.listen(process.env.PORTA || 3000, () => {
     console.log("API rodando")
-// })
+ })

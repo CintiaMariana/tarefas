@@ -1,3 +1,274 @@
 {
-  
+  "swagger": "2.0",
+  "info": {
+    "title": "API de tarefas",
+    "description": "API criada durante o curso de Sistemas de Informações",
+    "version": "2.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "paths": {
+    "/tarefa": {
+      "get": {
+        "tags": [
+          "Tarefas"
+        ],
+        "description": "Busca de todas as tarefas",
+        "responses": {
+          "200": {
+            "description": "Retorno com sucesso, devolve todos os dados dos usuários.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string",
+                    "example": "Nome da Tarefa"
+                  },
+                  "descricao": {
+                    "type": "string",
+                    "example": "Descrição da Tarefa"
+                  },
+                  "status": {
+                    "type": "string",
+                    "example": "Status da Tarefa"
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "Quando o usuário envia dados de forma incorreta."
+          },
+          "404": {
+            "description": "Quando não existem nenhum dado"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Tarefas"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "tarefa",
+            "in": "body",
+            "description": "Dados enviados para cadastrar a tarefa",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nome": {
+                  "type": "string",
+                  "example": "Nome da tarefa"
+                },
+                "descricao": {
+                  "type": "string",
+                  "example": "Descrição da tarefa"
+                },
+                "status": {
+                  "type": "string",
+                  "example": "Status da tarefa"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Tarefa criada com sucesso"
+          },
+          "400": {
+            "description": "Dados incorretos para criação da tarefa"
+          }
+        }
+      }
+    },
+    "/tarefa/{id}": {
+      "get": {
+        "tags": [
+          "Tarefas"
+        ],
+        "description": "Busca de tarefas através da ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retorno com sucesso, devolve os dados da Tarefa solicitada.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "type": "string",
+                    "example": "Nome da Tarefa"
+                  },
+                  "descricao": {
+                    "type": "string",
+                    "example": "Descrição da Tarefa"
+                  },
+                  "status": {
+                    "type": "string",
+                    "example": "Status da Tarefa"
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "Quando o usuário envia dados de forma incorreta."
+          },
+          "404": {
+            "description": "Quando não existem nenhum dado"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Tarefas"
+        ],
+        "description": "Atualiza uma tarefa existente pelo ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID da tarefa atualizada"
+          },
+          {
+            "name": "tarefa",
+            "in": "body",
+            "description": "Dados enviados para atualizar a tarefa",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nome": {
+                  "type": "string",
+                  "example": "Nome da Tarefa"
+                },
+                "descricao": {
+                  "type": "string",
+                  "example": "Descrição da Tarefa"
+                },
+                "status": {
+                  "type": "string",
+                  "example": "Status da Tarefa (exemplo: FEITO)"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tarefa atualizada com sucesso"
+          },
+          "400": {
+            "description": "Erro na soliticação de atualização"
+          },
+          "404": {
+            "description": "Tarefa não encontrada para atualizar"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Tarefas"
+        ],
+        "description": "Atualiza parcialamente uma tarefa existente pelo ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID da tarefa atualizada"
+          },
+          {
+            "name": "tarefa",
+            "in": "body",
+            "description": "Dados enviados para atualizar a tarefa",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nome": {
+                  "type": "string",
+                  "example": "Nome da Tarefa"
+                },
+                "descricao": {
+                  "type": "string",
+                  "example": "Descrição da Tarefa"
+                },
+                "status": {
+                  "type": "string",
+                  "example": "Status da Tarefa (exemplo: FEITO)"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tarefa atualizada com sucesso"
+          },
+          "400": {
+            "description": "Erro na soliticação de atualização"
+          },
+          "404": {
+            "description": "Tarefa não encontrada para atualizar"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Tarefas"
+        ],
+        "description": "Delete uma Tarefa utilizando sua ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "ID da tarefa a ser deletada"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Tarefa deletada com sucesso"
+          },
+          "400": {
+            "description": "Erro na solicitação"
+          }
+        }
+      }
+    }
+  }
 }

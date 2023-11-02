@@ -2,7 +2,7 @@ const autogen = require("swagger-autogen")()
 
 const fileDocs = './swaggerOutput.json'
 
-const routeFiles = './rotas/tarefa.js'
+const routeFiles = ['./rotas/tarefa.js']
 
 const infos = {
     info: {
